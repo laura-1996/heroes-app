@@ -13,6 +13,7 @@
     </form>
     </nav>
     <div class="art-gallery results" v-if="!this.searched">
+      <h1>Rijksmuseum</h1>
       <ul>
         <li v-for="(result, index) in gallery" v-bind:key="index" class="result">
           <ArtPiece :result="result"/>
@@ -26,8 +27,8 @@
         </li>
       </ul>
     </div>
-    </div>
     <Footer/>
+    </div>  
   </section>
 </template>
 
@@ -51,7 +52,7 @@ export default {
       scrollPosition:0,
       searched : false,
       errored : false,
-      loading : true
+      loading : true,
     }
   },
   created () {
@@ -195,9 +196,16 @@ form:hover .btn {
   color: white;
 }
 
+.art-gallery {
+  text-align: left;
+}
+
+.art-gallery h1 {
+  font-size: 4rem;
+}
+
 .results {
-  display: flex;
-  justify-content: center;
+  margin: 50px auto;
 }
 
 .result {
@@ -214,6 +222,7 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+  justify-items: center;
 }
 li {
   display: inline-block;
