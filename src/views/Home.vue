@@ -4,16 +4,17 @@
   </section>
   <section v-else>
     <div v-if="loading">Loading...</div>
-    <div>
+    <div class="container">
     <nav v-bind:class="[isSticky ? stickyClass : '']">
-      <h1>Look for Art</h1>
+      <a href="/" class="home"><h1>Look for Art</h1></a>
       <form action="" @submit.prevent="getData">
-      <input type="search" v-model="query" class="search" >
-      <button type="submit" class='btn' @submit="this.clearInput"><i class="fa fa-search"></i></button>
+      <input type="search" v-model="query" class="search">
+      <button type="submit" class='btn'><i class="fa fa-search"></i></button>
     </form>
     </nav>
+    <h2 class="title">Rijksmuseum</h2>
     <div class="art-gallery results" v-if="!this.searched">
-      <h1>Rijksmuseum</h1>
+      <h3>Browse the collection of the Rijksmuseum or search for an artist or art piece.</h3>
       <ul>
         <li v-for="(result, index) in gallery" v-bind:key="index" class="result">
           <ArtPiece :result="result"/>
@@ -21,6 +22,7 @@
       </ul>
     </div>
     <div v-if="this.searched" class="results">
+      <h3 class="querySearch">You are looking for "{{ query }}"</h3>
       <ul>
         <li v-for="(result, index) in results" v-bind:key="index" class="result">
           <ArtPiece :result="result"/>
@@ -39,7 +41,7 @@ import Footer from '../components/Footer.vue';
 
 export default {
   components: { ArtPiece, Footer },
-  name: 'Search',
+  name: 'Home',
   data(){
     return {
       query : null,
@@ -96,7 +98,7 @@ export default {
     },
     handleScroll(){
       this.scrollPosition = window.scrollY;
-      if(this.scrollPosition>=80){
+      if(this.scrollPosition>=30){
         this.isSticky=true;
       }else{
         this.isSticky=false;
@@ -106,8 +108,33 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.container {
+  text-align: center;
+}
+
+h1{
+  margin: 30px 50px;
+}
+
+h3 {
+  margin: 10px 50px;
+}
+
+.home {
+  text-decoration: none;
+}
+
+.title {
+  font-size: 4rem;
+  margin: 90px 50px 0;
+  text-align: left;
+}
+
+.querySearch {
+  margin: 20px 50px ;
+}
 
 nav {
   display: flex;
@@ -120,6 +147,15 @@ nav {
   z-index: 1;
 }
 
+nav:hover {
+  background-color: #ffffffa3;
+  transition: all 0.3s ease;
+}
+
+nav:hover h1{
+  color: #07051a;
+}
+
 nav.is_sticky {
   background-color: #ffffffa3;
   transition: all 0.3s ease;
@@ -127,14 +163,6 @@ nav.is_sticky {
 
 nav.is_sticky h1 {
   color: #07051a;
-}
-
-h1{
-  margin: 30px 50px;
-}
-
-.results {
-  margin-top: 90px;
 }
 
 form {
@@ -165,6 +193,20 @@ input {
   padding: 0 20px;
 }
 
+form:hover{
+  width: 200px;
+  cursor: pointer;
+}
+
+form:hover input{
+  display: block;
+}
+
+form:hover .btn {
+  background: #0c2954;
+  color: white;
+}
+
 .btn {
   box-sizing: border-box;
   padding: 10px;
@@ -182,20 +224,6 @@ input {
   background-color: white;
 }
 
-form:hover{
-  width: 200px;
-  cursor: pointer;
-}
-
-form:hover input{
-  display: block;
-}
-
-form:hover .btn {
-  background: #0c2954;
-  color: white;
-}
-
 .art-gallery {
   text-align: left;
 }
@@ -205,7 +233,7 @@ form:hover .btn {
 }
 
 .results {
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 .result {
@@ -213,41 +241,61 @@ form:hover .btn {
   max-width: 300px;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
 ul {
   list-style-type: none;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 50px;
   justify-items: center;
+  margin: 0 50px;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #ffffff;
 }
 
-@media  screen and ( max-width : 1061px) {
-  ul {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-}
+
 
 @media  screen and ( max-width : 740px) {
+  .title {
+    margin: 80px auto 0;
+    font-size: 2rem;
+  }
+
+  h3 {
+    margin: 20px 30px;
+  }
   ul {
     grid-template-columns: 1fr;
     gap: 50px;
   }
 }
+
+@media  screen and ( min-width : 740px) {
+  ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 20px 50px;
+  }
+}
+
 @media  screen and ( min-width : 1248px) {
   ul {
-    gap: 70px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    margin: 20px 50px;
+  }
+}
+
+@media  screen and ( min-width : 1424px) {
+  ul {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
+<router-link to="/"><i class="fa fa-arrow-left"></i><p>Back</p></router-link>
 <div v-if="loading">Loading...</div>
 <div v-else>
-<router-link to="/"><i class="fa fa-arrow-left"></i><p>Back</p></router-link>
     <article>
       <div class="container">
       <h1>Title: {{ details.title }}</h1>
@@ -107,6 +107,16 @@ a p {
 img {
   width: 500px;
   flex-basis: 40%;
+}
+
+@media screen and (max-width : 600px) {
+  .authorBox {
+    max-width: 350px;
+  }
+
+  img {
+    max-width: 350px;
+  }
 }
 
 @media  screen and (max-width : 1001px) {

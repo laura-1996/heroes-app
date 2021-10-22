@@ -7,7 +7,7 @@
             </li>
             <li>
                 <span>By</span>
-                <a href="https://www.linkedin.com/in/laura-spina-80aa3b172/" target="_blank">Laura Spina</a>
+                <a href="https://github.com/laura-1996" target="_blank">Laura Spina</a>
             </li>
         </ul>
     </footer>
@@ -20,13 +20,15 @@ export default {
 </script>
 <style scoped>
 footer {
-    position: absolute;
-    height: 150px;
-    width: 100%;
-    background-color: rgb(255 255 255 / 55%);
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  background-color: rgb(255 255 255 / 55%);
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 } 
+
 footer ul {
   width: 1000px;
   text-align: center;
@@ -40,6 +42,7 @@ footer li {
   line-height: 44px;
   margin: 0 20px;
 }
+
 a {
   color: #0c2954;
   font-weight: bold;
@@ -48,6 +51,7 @@ a {
   display: inline-block;
   position: relative;
 }
+
 a:after {    
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
@@ -66,8 +70,8 @@ a:hover:after {
   left: 0; 
 }
 span {
-    color: white;
-    margin-right: 12px;
+  color: white;
+  margin-right: 12px;
 }
 
 </style>
