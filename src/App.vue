@@ -9,5 +9,13 @@
   -moz-osx-font-smoothing: grayscale;
   color: #ffff;
 }
+html {
+    margin: 0;
+    background: #0c2954;
+}
+
+body {
+    margin: 0;
+}
 
 </style>
